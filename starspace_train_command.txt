@@ -1,0 +1,1 @@
+./starspace train -trainFile /home/franklin/comfolder/data_prepared.tsv -model StarSpaceModel -trainMode 3 -adagrad true -ngrams 1 -epoch 5 -dim 100 -similarity cosine -minCount 2 -verbose true -fileFormat labelDoc --negSearchLimit 10 -lr 0.02
