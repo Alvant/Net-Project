@@ -2,7 +2,7 @@
 
 
 
-This is the final work on Network Technologies, a course by [Dmitry Podlesnykh at MIPT.
+This is the final work on Network Technologies, a course by [Dmitry Podlesnykh](http://acm.mipt.ru/twiki/bin/view/Main/DmitryPodlesnykh) at MIPT.
 
 
 
@@ -43,7 +43,7 @@ There are two ways to chat with the bot
 
 
 
-##Usage
+## Usage
 
 
 
@@ -57,7 +57,7 @@ If you want to finish the dialog, type *Ciao!* or *ciao!* (or, actually, any oth
 
 
 
-##Acknowledgements
+## Acknowledgements
 
 
 
