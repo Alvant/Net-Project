@@ -31,7 +31,7 @@ There are two ways to chat with the bot
 
   `mono client.exe`
 
-  You can even compile its C# code, for whatever it is you need :)
+  You can even compile its [C# code](https://github.com/Alvant/Net-Project/blob/master/client/client.cs), for whatever it is you need :)
 
   `dmcs client.cs` 
 
