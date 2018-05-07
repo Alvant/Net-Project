@@ -1,4 +1,4 @@
-# Net Project: Dialog Bot
+# Net Project: Dialogue Bot
 
 
 This is the final work on [Network Technologies](http://acm.mipt.ru/twiki/bin/view/Networks), a course by [Dmitry Podlesnykh](http://wikimipt.org/wiki/%D0%9F%D0%BE%D0%B4%D0%BB%D0%B5%D1%81%D0%BD%D1%8B%D1%85_%D0%94%D0%BC%D0%B8%D1%82%D1%80%D0%B8%D0%B9_%D0%90%D1%80%D1%82%D1%83%D1%80%D0%BE%D0%B2%D0%B8%D1%87) at [Moscow Institute of Physics and Technology (MIPT)](https://mipt.ru/english/).
