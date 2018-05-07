@@ -99,7 +99,7 @@ Here is an example of a dialog (or rather a series of question-answer pairs) wit
 > 
 > have a nice outing you lot
 
-## Acknowledgements & Advertisements
+## Acknowledgements (and Advertisements)
 
 The work in general is, in fact, a mixture of several homeworks on two courses from [Coursera platform](https://www.coursera.org/)
 
