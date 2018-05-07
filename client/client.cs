@@ -1,4 +1,4 @@
-﻿/** Based on https://docs.microsoft.com/ru-ru/dotnet/framework/network-programming/synchronous-client-socket-example */
+﻿/** Based on the code from https://docs.microsoft.com/ru-ru/dotnet/framework/network-programming/synchronous-client-socket-example */
 
 using System;
 using System.Net;
@@ -14,24 +14,26 @@ public class SynchronousSocketClient {
         // Connect to a remote device
         try {
             // Establish the remote endpoint for the socket
-            // This example uses port 8080 on the local computer
-            IPHostEntry ipHostInfo = Dns.GetHostEntry("ec2-54-89-217-31.compute-1.amazonaws.com"); //Dns.GetHostEntry(Dns.GetHostName());
-            IPAddress ipAddress = ipHostInfo.AddressList[0]; //IPAddress.Parse("");
-            int port = 8080;
-            IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
-            //String host = "";
+
+            String host = "ec2-54-89-217-31.compute-1.amazonaws.com";
+            int    port = 8080;
+
+            IPHostEntry ipHostInfo = Dns.GetHostEntry(host); //Dns.GetHostEntry(Dns.GetHostName());
+            IPAddress   ipAddress  = ipHostInfo.AddressList[0]; //IPAddress.Parse("");
+            IPEndPoint  remoteEP   = new IPEndPoint(ipAddress, port);
 
             // Create a TCP/IP socket
-            Socket sender = new Socket(AddressFamily.InterNetwork, //ipAddress.AddressFamily,
-                SocketType.Stream, ProtocolType.Tcp);
+            Socket sender = new Socket(
+                AddressFamily.InterNetwork, //ipAddress.AddressFamily,
+                SocketType.Stream,
+                ProtocolType.Tcp
+            );
 
             // Connect the socket to the remote endpoint. Catch any errors
             try {
-                sender.Connect(remoteEP);
-                //sender.Connect(host, port);
+                sender.Connect(remoteEP); //sender.Connect(host, port);
 
-                Console.WriteLine("Dare to talk!\n");
-                    //sender.RemoteEndPoint.ToString());
+                Console.WriteLine("Dare to talk!\n"); //sender.RemoteEndPoint.ToString());
 
                 String message = "";
 
@@ -47,9 +49,12 @@ public class SynchronousSocketClient {
 
                     // Receive the response from the remote device
                     int bytesRec = sender.Receive(bytes);
-                    Console.WriteLine("> {0}",
-                        Encoding.ASCII.GetString(bytes, 0, bytesRec));
+                    Console.WriteLine(
+                        "> {0}", Encoding.ASCII.GetString(bytes, 0, bytesRec));
                 }
+
+                Console.Write("You finished the chat. Press any button to close the application...");
+                Console.ReadKey();
 
                 // Release the socket
                 sender.Shutdown(SocketShutdown.Both);

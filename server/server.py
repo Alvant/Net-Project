@@ -28,20 +28,20 @@ class ClientServerProtocol(asyncio.Protocol):
         except UnicodeDecodeError:
             return
 
-        # Ждём данных, если команда не завершена символом \n
+        # Wait till command ends with '\n'
         if not decoded_data.endswith('\n'):
             return
 
         print('> ' + decoded_data, end='')
 
         try:
-            # Обработка поступившего сообщения
+            # Process incoming message
             resp = self.process_data(decoded_data)
         except Exception as err:
             self.transport.write(("Error\n" + str(err) + "\n\n").encode())
             return
 
-        # Отправка ответа
+        # Send response
         self.transport.write(resp.encode())
 
     def process_data(self, data):
@@ -59,8 +59,7 @@ class ClientServerProtocol(asyncio.Protocol):
 def run_server(host, port):
     loop = asyncio.get_event_loop()
     coro = loop.create_server(
-        ClientServerProtocol,
-        host, port
+        ClientServerProtocol, host, port
     )
 
     server = loop.run_until_complete(coro)

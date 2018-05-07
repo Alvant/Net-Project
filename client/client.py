@@ -2,18 +2,17 @@ import socket
 
 
 class ClientError(Exception):
-    """Общий класс исключений клиента"""
+    """General Client exception"""
     pass
 
 
 class ClientSocketError(ClientError):
-    """Исключение, выбрасываемое клиентом при сетевой ошибке"""
     pass
 
 
 class Client:
     def __init__(self, host, port, timeout=None):
-        # Класс инкапсулирует создание сокета
+        # Socket encapsulation
         self.host = host
         self.port = port
         try:
@@ -22,9 +21,11 @@ class Client:
             raise ClientSocketError("Error while creating connection", err)
 
     def _read(self):
-        """Метод для чтения ответа сервера"""
+        """Reads Server's answer"""
+
         data = b""
-        # Накапливаем буфер, пока не встретим "\n" в конце команды
+
+        # Fill buffer while '\n' not encountered
         while not data.endswith(b"\n"):
             try:
                 data += self.connection.recv(1024)
@@ -36,15 +37,13 @@ class Client:
         return decoded_data
 
     def post(self, message):
-        # Отправляем запрос
+        # Send message
         try:
-            self.connection.sendall(
-                message.encode()
-            )
+            self.connection.sendall(message.encode())
         except socket.error as err:
-            raise ClientSocketError("error send data", err)
+            raise ClientSocketError("Error send data", err)
 
-        # Разбираем ответ
+        # Read answer
         return self._read()
 
     def close(self):
@@ -55,7 +54,9 @@ class Client:
 
 
 if __name__ == "__main__":
-    client = Client("ec2-54-89-217-31.compute-1.amazonaws.com", 8080, timeout=10)
+    host = "ec2-54-89-217-31.compute-1.amazonaws.com"
+    port = 8080
+    client = Client(host, port, timeout=10)
 
     message = ''
 
