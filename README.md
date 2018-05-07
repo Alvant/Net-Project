@@ -23,8 +23,23 @@ In *client* folder there are [python client](https://github.com/Alvant/Net-Proje
 
 There are two ways to chat with the bot
 
-* Download [binary client](https://github.com/Alvant/Net-Project/blob/master/client/client.exe) and run it
-* Download [python client](https://github.com/Alvant/Net-Project/blob/master/client/client.py). In order to make it work, one should also have Python 3 with [socket module](https://docs.python.org/3/library/socket.html) installed on the PC
+* Download [binary client](https://github.com/Alvant/Net-Project/blob/master/client/client.exe). If you use Windows, just run it. If you are on Ubuntu, or Mac, or some other OS, try installing [Mono](http://www.mono-project.com/) first, which is a "cross platform and open source .NET framework". In Ubuntu, for example, it accomplishes by typing a command
+
+  `sudo apt-get install monodevelop mono-utils`
+
+  After that you can run the bot
+
+  `mono client.exe`
+
+  You can even compile its C# code, for whatever it is you need :)
+
+  `dmcs client.cs` 
+
+* Download [python client](https://github.com/Alvant/Net-Project/blob/master/client/client.py). In order to make it work, one should also have Python 3 installed on the PC. If you don't have it, you can get using [Anaconda](https://anaconda.org/anaconda/python).
+
+  And to connect with the bot, type
+
+  `python3 client.py`
 
 
 If you managed to complete either step from above, I assume that you also have Internet connection. It is also important :)
