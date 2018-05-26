@@ -1,5 +1,6 @@
 import socket
-
+import json
+import os
 
 class ClientError(Exception):
     """General Client exception"""
@@ -15,6 +16,7 @@ class Client:
         # Socket encapsulation
         self.host = host
         self.port = port
+
         try:
             self.connection = socket.create_connection((host, port), timeout)
         except socket.error as err:
@@ -54,8 +56,14 @@ class Client:
 
 
 if __name__ == "__main__":
-    host = "ec2-54-89-217-31.compute-1.amazonaws.com"
-    port = 8080
+    config_file_path = os.path.join('.', 'bin', 'config.data')
+
+    with open(config_file_path, 'r') as f:
+        config = json.loads(f.read())
+
+    host = 'localhost' # config["host"]
+    port = int(config["port"])
+
     client = Client(host, port, timeout=10)
 
     message = ''

@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
+import os
+
 import asyncio
 from dialogue_manager import DialogueManager
+
+
+ips_file = os.path.join('.', 'white_list.txt')
+checkIpFlag = False
 
 
 def is_unicode(text):
@@ -15,12 +21,35 @@ class SimpleDialogueManager(object):
 
 dialogue_manager = DialogueManager()
 
+
 class ClientServerProtocol(asyncio.Protocol):
     def __init__(self):
         super().__init__()
+        self.ips = self.readIps()
+
+    def readIps(self):
+        with open(ips_file, 'r') as f:
+            result = f.readlines()
+
+        result = [l.strip() for l in result if len(l.strip()) != 0]
+
+        return result
 
     def connection_made(self, transport):
         self.transport = transport
+
+        self.peername = transport.get_extra_info('peername')
+        self.sockname = transport.get_extra_info('sockname')
+
+        self.ip_address = self.peername[0]
+
+        if checkIpFlag and self.ip_address not in self.ips:
+            print('IP address {0} not in white list'.format(self.ip_address))
+
+            self.transport.write(("Sorry, your IP address not in white list :)\n").encode())
+            self.transport.close()
+
+            return
 
     def data_received(self, data):
         try:
