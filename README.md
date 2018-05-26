@@ -9,7 +9,16 @@ A chatbot is running on the Amazon server... And one can have a talk with it!
 
 There are two folders: *client* and *server*.
 
-In *client* folder there are [python client](https://github.com/Alvant/Net-Project/blob/master/client/client.py) and [C# client](https://github.com/Alvant/Net-Project/blob/master/client/client.cs) with corresponding [exe file](https://github.com/Alvant/Net-Project/blob/master/client/client.exe).
+In *Client* folder there are [python client](https://github.com/Alvant/Net-Project/blob/master/client/client.py) and [C# client](https://github.com/Alvant/Net-Project/blob/master/client/client.cs) with corresponding [exe file](https://github.com/Alvant/Net-Project/blob/master/client/bin/client.exe).
+
+There is also a [config file](https://github.com/Alvant/Net-Project/blob/master/client/bin/config.data) in [bin folder](https://github.com/Alvant/Net-Project/blob/master/client/bin). It contains host name of the server and its port number for the client to connect to. Make sure the config file looks like the following
+
+```json
+{
+  "host": "ec2-54-89-217-31.compute-1.amazonaws.com",
+  "port": "8080"
+}
+```
 
 *Server* folder contains
 
@@ -23,7 +32,7 @@ In *client* folder there are [python client](https://github.com/Alvant/Net-Proje
 
 There are two ways to chat with the bot
 
-* Download [binary client](https://github.com/Alvant/Net-Project/blob/master/client/client.exe). If you use Windows, just run it. If you are on Ubuntu, or Mac, or some other OS, try installing [Mono](http://www.mono-project.com/) first, which is a "cross platform and open source .NET framework". In Ubuntu, for example, it accomplishes by typing a command
+* Download [binary client folder](https://github.com/Alvant/Net-Project/blob/master/client/bin). If you use Windows, just run it. If you are on Ubuntu, or Mac, or some other OS, try installing [Mono](http://www.mono-project.com/) first, which is a "cross platform and open source .NET framework". In Ubuntu, for example, it accomplishes by typing a command
 
   `sudo apt-get install monodevelop mono-utils`
 
